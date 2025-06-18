@@ -80,6 +80,7 @@ class DatePicker extends StatefulWidget {
     this.previousPageSemanticLabel,
     this.nextPageSemanticLabel,
     this.disabledDayPredicate,
+    this.nextWidget,this.previousWidget,
   }) {
     assert(!minDate.isAfter(maxDate), "minDate can't be after maxDate");
   }
@@ -229,6 +230,12 @@ class DatePicker extends StatefulWidget {
   /// A predicate function used to determine if a given day should be disabled.
   final DatePredicate? disabledDayPredicate;
 
+  /// if need to edit the next widget
+  final Widget? nextWidget;
+
+  /// if need to edit the previous widget
+  final Widget? previousWidget;
+
   @override
   State<DatePicker> createState() => _DatePickerState();
 }
@@ -273,6 +280,8 @@ class _DatePickerState extends State<DatePicker> {
         return Padding(
           padding: widget.padding,
           child: DaysPicker(
+            nextWidget: widget.nextWidget,
+            previousWidget: widget.previousWidget,
             centerLeadingDate: widget.centerLeadingDate,
             initialDate: _displayedDate,
             selectedDate: _selectedDate,
@@ -315,6 +324,8 @@ class _DatePickerState extends State<DatePicker> {
         return Padding(
           padding: widget.padding,
           child: MonthPicker(
+            previousWidget: widget.previousWidget,
+            nextWidget: widget.nextWidget,
             centerLeadingDate: widget.centerLeadingDate,
             initialDate: _displayedDate,
             selectedDate: _selectedDate,
@@ -360,6 +371,8 @@ class _DatePickerState extends State<DatePicker> {
         return Padding(
           padding: widget.padding,
           child: YearsPicker(
+            nextWidget: widget.nextWidget,
+            previousWidget: widget.previousWidget,
             centerLeadingDate: widget.centerLeadingDate,
             initialDate: _displayedDate,
             selectedDate: _selectedDate,

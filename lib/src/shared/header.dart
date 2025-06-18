@@ -44,6 +44,7 @@ class Header extends StatelessWidget {
   const Header({
     super.key,
     required this.displayedDate,
+
     required this.onDateTap,
     required this.onNextPage,
     required this.onPreviousPage,
@@ -53,6 +54,8 @@ class Header extends StatelessWidget {
     this.centerLeadingDate = false,
     this.previousPageSemanticLabel,
     this.nextPageSemanticLabel,
+    this.nextWidget,
+    this.previousWidget,
   });
 
   /// The currently displayed date. It is typically in a format
@@ -96,6 +99,12 @@ class Header extends StatelessWidget {
 
   /// Semantic label for button to go to the next page.
   final String? nextPageSemanticLabel;
+
+  /// if need to edit the next widget
+  final Widget? nextWidget;
+
+  /// if need to edit the previous widget
+  final Widget? previousWidget;
 
   @override
   Widget build(BuildContext context) {

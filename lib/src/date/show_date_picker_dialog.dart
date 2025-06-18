@@ -71,6 +71,12 @@ Future<DateTime?> showDatePickerDialog({
   bool centerLeadingDate = false,
   String? previousPageSemanticLabel,
   String? nextPageSemanticLabel,
+  /// if need to edit the next widget
+  Widget? nextWidget,
+
+  /// if need to edit the previous widget
+  Widget? previousWidget,
+
 }) async {
   return showDialog<DateTime>(
     context: context,
@@ -100,6 +106,8 @@ Future<DateTime?> showDatePickerDialog({
               width: width ?? size.width,
               height: height ?? size.height,
               child: DatePicker(
+                nextWidget: nextWidget,
+                previousWidget: previousWidget,
                 centerLeadingDate: centerLeadingDate,
                 initialDate: initialDate,
                 maxDate: maxDate,

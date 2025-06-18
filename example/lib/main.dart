@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      locale: const Locale('en', 'US'),
+      locale: const Locale('ar'),
       localizationsDelegates: GlobalMaterialLocalizations.delegates,
       supportedLocales: const [
         Locale('en', 'GB'),
@@ -35,12 +35,14 @@ class MyApp extends StatelessWidget {
                       minDate: DateTime(2020),
                       maxDate: DateTime(2024),
                       initialDate: DateTime(2023, 1),
-                      disabledDayPredicate: (date) {
-                        return date.weekday == DateTime.sunday || date.weekday == DateTime.saturday;
-                      },
-                      disabledCellsDecoration: const BoxDecoration(
-                        color: Colors.green,
-                      ),
+
+                      // disabledDayPredicate: (date) {
+                      //   return date.weekday == DateTime.sunday || date.weekday == DateTime.saturday;
+                      // },
+                      // disabledCellsDecoration: const BoxDecoration(
+                      //   color: Colors.,
+                      // ),
+                      disabledCellsTextStyle: TextStyle(color: Colors.grey),
                     ),
                   ),
                 ],

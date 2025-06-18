@@ -72,6 +72,11 @@ Future<DateTimeRange?> showRangePickerDialog({
   bool centerLeadingDate = false,
   String? previousPageSemanticLabel,
   String? nextPageSemanticLabel,
+  /// if need to edit the next widget
+   Widget? nextWidget,
+
+  /// if need to edit the previous widget
+   Widget? previousWidget,
 }) async {
   return showDialog<DateTimeRange>(
     context: context,
@@ -101,6 +106,8 @@ Future<DateTimeRange?> showRangePickerDialog({
               width: width ?? size.width,
               height: height ?? size.height,
               child: RangeDatePicker(
+                nextWidget: nextWidget,
+                previousWidget: previousWidget,
                 centerLeadingDate: centerLeadingDate,
                 currentDate: currentDate,
                 maxDate: maxDate,
