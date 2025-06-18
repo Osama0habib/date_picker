@@ -83,7 +83,7 @@ class RangeDatePicker extends StatefulWidget {
     this.previousPageSemanticLabel,
     this.nextPageSemanticLabel,
     this.nextWidget,
-    this.previousWidget,
+    this.previousWidget, this.customRangeDayViews,
   }) {
     assert(!minDate.isAfter(maxDate), "minDate can't be after maxDate");
   }
@@ -270,6 +270,9 @@ class RangeDatePicker extends StatefulWidget {
   /// if need to edit the previous widget
   final Widget? previousWidget;
 
+  final Widget? customRangeDayViews;
+
+
   @override
   State<RangeDatePicker> createState() => _RangeDatePickerState();
 }
@@ -329,6 +332,7 @@ class _RangeDatePickerState extends State<RangeDatePicker> {
         return Padding(
           padding: widget.padding,
           child: RangeDaysPicker(
+            customRangeDayViews: widget.customRangeDayViews,
             nextWidget: widget.nextWidget,
             previousWidget: widget.previousWidget,
             centerLeadingDate: widget.centerLeadingDate,
