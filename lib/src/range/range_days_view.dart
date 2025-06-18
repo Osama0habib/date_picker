@@ -237,7 +237,27 @@ class RangeDaysView extends StatelessWidget {
     while (day < daysInMonth) {
       day++;
       if (day < 1) {
-        dayItems.add(const SizedBox.shrink());
+
+        final int prevMonthYear = (month == 1) ? year - 1 : year;
+        final int prevMonth = (month == 1) ? 12 : month - 1;
+        final int daysInPrevMonth = DateUtils.getDaysInMonth(prevMonthYear, prevMonth);
+        final int overflowDay = daysInPrevMonth + day;
+
+        final DateTime dayToBuild = DateTime(prevMonthYear, prevMonth, overflowDay);
+
+        Widget dayWidget = Center(
+          child: Text(
+            localizations.formatDecimal(dayToBuild.day),
+            style: disabledCellsTextStyle,
+          ),
+        );
+
+        dayWidget = Container(
+          decoration: disabledCellsDecoration,
+          child: dayWidget,
+        );
+
+        dayItems.add(ExcludeSemantics(child: dayWidget));
       } else {
         final DateTime dayToBuild = DateTime(year, month, day);
         final bool isDisabled =
@@ -373,6 +393,27 @@ class RangeDaysView extends StatelessWidget {
       }
     }
 
+    final int nextMonthYear = (month == 12) ? year + 1 : year;
+    final int nextMonth = (month == 12) ? 1 : month + 1;
+
+    int nextDay = 1;
+    while (dayItems.length < 49) { // 7 days/week * 7 rows = 49
+      final DateTime dayToBuild = DateTime(nextMonthYear, nextMonth, nextDay++);
+
+      Widget dayWidget = Center(
+        child: Text(
+          localizations.formatDecimal(dayToBuild.day),
+          style: disabledCellsTextStyle,
+        ),
+      );
+
+      dayWidget = Container(
+        decoration: disabledCellsDecoration,
+        child: dayWidget,
+      );
+
+      dayItems.add(ExcludeSemantics(child: dayWidget));
+    }
     return GridView.custom(
       padding: EdgeInsets.zero,
       shrinkWrap: true,
