@@ -113,11 +113,11 @@ class Header extends StatelessWidget {
       child: SizedBox(
         width: 36,
         height: 36,
-        child: DecoratedBox(
+        child:nextWidget ??  DecoratedBox(
           decoration: const BoxDecoration(
             shape: BoxShape.circle,
           ),
-          child: Icon(
+          child:Icon(
             Icons.arrow_forward_ios_rounded,
             size: slidersSize,
             color: slidersColor,
@@ -131,11 +131,11 @@ class Header extends StatelessWidget {
       child: SizedBox(
         width: 36,
         height: 36,
-        child: DecoratedBox(
+        child:previousWidget ??  DecoratedBox(
           decoration: const BoxDecoration(
             shape: BoxShape.circle,
           ),
-          child: Icon(
+          child:Icon(
             Icons.arrow_back_ios_rounded,
             size: slidersSize,
             color: slidersColor,
