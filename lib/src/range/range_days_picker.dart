@@ -39,7 +39,7 @@ class RangeDaysPicker extends StatefulWidget {
     this.previousPageSemanticLabel = 'Previous Day',
     this.nextPageSemanticLabel = 'Next Day',
     this.nextWidget,
-    this.previousWidget,
+    this.previousWidget, this.customRangeDayViews,
   }) {
     assert(!minDate.isAfter(maxDate), "minDate can't be after maxDate");
 
@@ -219,6 +219,8 @@ class RangeDaysPicker extends StatefulWidget {
 
   /// if need to edit the previous widget
   final Widget? previousWidget;
+
+  final Widget? customRangeDayViews;
 
   @override
   State<RangeDaysPicker> createState() => __RangeDaysPickerState();
@@ -455,7 +457,7 @@ class __RangeDaysPickerState extends State<RangeDaysPicker> {
                 itemBuilder: (context, index) {
                   final DateTime month = DateUtils.addMonthsToMonthDate(widget.minDate, index);
 
-                  return RangeDaysView(
+                  return widget.customRangeDayViews ?? RangeDaysView(
                     key: ValueKey<DateTime>(month),
                     currentDate: DateUtils.dateOnly(widget.currentDate ?? DateTime.now()),
                     minDate: DateUtils.dateOnly(widget.minDate),
