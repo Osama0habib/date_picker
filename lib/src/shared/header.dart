@@ -110,10 +110,10 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     final forwardButton = GestureDetector(
       onTap: onNextPage,
-      child: SizedBox(
+      child:nextWidget ?? SizedBox(
         width: 36,
         height: 36,
-        child:nextWidget ??  DecoratedBox(
+        child:  DecoratedBox(
           decoration: const BoxDecoration(
             shape: BoxShape.circle,
           ),
@@ -128,10 +128,10 @@ class Header extends StatelessWidget {
 
     final backButton = GestureDetector(
       onTap: onPreviousPage,
-      child: SizedBox(
+      child: previousWidget ??SizedBox(
         width: 36,
         height: 36,
-        child:previousWidget ??  DecoratedBox(
+        child:  DecoratedBox(
           decoration: const BoxDecoration(
             shape: BoxShape.circle,
           ),
