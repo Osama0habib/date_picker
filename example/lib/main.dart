@@ -30,11 +30,16 @@ class MyApp extends StatelessWidget {
                 children: [
                   SizedBox(
                     height: 400,
-                    child: DatePicker(
+                    child: RangeDatePicker(
+                      onMonthYearChanged: (date) {
+                        print("Selected month: $date");
+                      },
+
                       centerLeadingDate: true,
                       minDate: DateTime(2020),
                       maxDate: DateTime(2024),
                       initialDate: DateTime(2023, 1),
+
 
                       // disabledDayPredicate: (date) {
                       //   return date.weekday == DateTime.sunday || date.weekday == DateTime.saturday;
