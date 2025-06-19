@@ -403,6 +403,7 @@ class _RangeDatePickerState extends State<RangeDatePicker> {
         return Padding(
           padding: widget.padding,
           child: MonthPicker(
+            onMonthYearChanged: widget.onMonthYearChanged,
             previousWidget: widget.previousWidget,
             nextWidget: widget.nextWidget,
             centerLeadingDate: widget.centerLeadingDate,

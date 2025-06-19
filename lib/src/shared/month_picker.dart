@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 import 'device_orientation_builder.dart';
@@ -72,7 +73,7 @@ class MonthPicker extends StatefulWidget {
     this.previousPageSemanticLabel = 'Previous Month',
     this.nextPageSemanticLabel = 'Next Month',
     this.nextWidget,
-    this.previousWidget,
+    this.previousWidget, this.onMonthYearChanged,
   }) {
     assert(!minDate.isAfter(maxDate), "minDate can't be after maxDate");
 
@@ -233,6 +234,9 @@ class MonthPicker extends StatefulWidget {
 
   /// if need to edit the previous widget
   final Widget? previousWidget;
+
+  final ValueChanged<DateTime>? onMonthYearChanged;
+
   @override
   State<MonthPicker> createState() => _MonthPickerState();
 }
@@ -430,7 +434,7 @@ class _MonthPickerState extends State<MonthPicker> {
                     // widget.minDate.month,
                     // widget.minDate.day,
                   );
-
+                  widget.onMonthYearChanged?.call(year);
                   setState(() {
                     _displayedYear = year;
                   });
@@ -465,6 +469,8 @@ class _MonthPickerState extends State<MonthPicker> {
                     onChanged: (value) {
                       final selected = DateUtilsX.monthOnly(value);
                       widget.onDateSelected?.call(selected);
+                      widget.onMonthYearChanged?.call(selected);
+
                       setState(() {
                         _selectedDate = selected;
                       });
